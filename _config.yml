@@ -1,12 +1,12 @@
 # Site settings
-name: Less Or More
+name: Echizen Ryoma
 email: 790545771@qq.com
 author: Echizen Ryoma
 url: https://bigmousefive.github.io/
 resume_site: https://bigmousefive.github.io/
 github: https://github.com/BigMouseFive
 baseurl: "/"
-description: 
+description: You still have lots more to work on!
 meta_description: 戴锐;个人博客;
 motto: 
 banner: 
@@ -17,7 +17,7 @@ paginate: 10
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
-github_username: luoyan35714
+github_username: BigMouseFive
 
 # Build settings
 markdown: kramdown
