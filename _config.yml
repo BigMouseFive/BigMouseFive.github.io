@@ -1,6 +1,6 @@
 # Site settings
-title: Lorem Ipsum - Web Developer
-description: "A blog about lorem ipsum ..."
+title: turtle - Web Developer
+description: "Blogs of Echizen"
 baseurl: "/" # for test: remove string '/space-jekyll-template' to ''
 url: "https://bigmousefive.github.io/" # for test: remove string 'http://victorvoid.github.io' to '' but in production: 'https://yourusername.github.io'
 
@@ -8,12 +8,12 @@ url: "https://bigmousefive.github.io/" # for test: remove string 'http://victorv
 username: Echzien Ryoma
 user_title: Echzien Ryoma
 email: 790545771@qq.com
-twitter_username: five
+wechat_username: five
 github_username:  BigMouseFive
-gplus_username:  loremipsum
-linkedin_public_url: loremipsum # Example: For public profile 'www.linkedin.com/in/john-smith', 'john-smith' is your linkedin_public_url
+qq_username:  帒&龍馬
+zhihu_url: 龙马 # Example: For public profile 'www.linkedin.com/in/john-smith', 'john-smith' is your linkedin_public_url
 disqus_username: loremipsum
-profile_picture: https://68.media.tumblr.com/93f384858e9273d5b980b418e2f2f4d5/tumblr_o5i2aybLJG1uapsfmo2_250.png
+profile_picture: /src/img/my_girl.png
 
 # Build settings
 markdown: kramdown
