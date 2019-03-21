@@ -144,10 +144,10 @@
           $('html,body').animate({scrollTop: $(id).offset().top}, 600);
         });
         //changeActiveItem(0);
-        dis_top_p = $("#toc p").offset().top ;
-        $(window).scroll(function(){
-          var distance = $(window).scrollTop();
-          changeActiveItem(distance);
-        });
+        // dis_top_p = $("#toc p").offset().top ;
+        // $(window).scroll(function(){
+        //   var distance = $(window).scrollTop();
+        //   changeActiveItem(distance);
+        // });
     };
 })(jQuery);
