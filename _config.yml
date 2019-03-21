@@ -1,5 +1,5 @@
 # Site settings
-title: turtle - Web Developer
+title: Lemon - Blogs of Echizen
 description: "Blogs of Echizen"
 baseurl: "/" # for test: remove string '/space-jekyll-template' to ''
 url: "https://bigmousefive.github.io/" # for test: remove string 'http://victorvoid.github.io' to '' but in production: 'https://yourusername.github.io'
@@ -17,6 +17,22 @@ profile_picture: /assets/img/my_girl.png
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+  hard_wrap: false
+  syntax_highlighter: rouge
+  transliterated_header_ids: true
+  footnote_backlink: "&#8617;&#xfe0e;"
+  extensions:
+    - autolink
+    - footnotes
+    - smart
 highlighter: rouge
 permalink: /:title/
 
@@ -30,41 +46,28 @@ compress_html:
 # Links to include in menu navigation
 links:
   section_1:
-    - title: home
+    - title: 主页
       url: /
       key_trigger: 1
-    - title: my posts
+    - title: 时间
       url: /posts
       key_trigger: 2
-    - title: series
+    - title: 分类
       url: /series
       key_trigger: 3
-    - title: tags
+    - title: 标签
       url: /tags
       key_trigger: 4
-    - title: about me
+    - title: 关于
       url: /about
       key_trigger: 5
-  section_2:
-    - title: github
-      url: http://www.github.com/victorvoid
-      new_tab: true
-      key_trigger: g
-    - title: twitter
-      url: http://www.twitter.com/victorvoid
-      key_trigger: t
-    - title: search
-      url: ""
-      key_trigger: s #WARNING: search only works with "s"
 
 # projects in header index
 projects:
-  - name: fluany
-    url: https://github.com/fluany/fluany
-  - name: vim-frontend
-    url: https://github.com/victorvoid/vim-frontend
-  - name: generator-capybara
-    url: https://github.com/victorvoid/generator-capybara 
+  - name: lemon01
+    url: https://github.com/BigMouseFive/lemon01
+  - name: lemon02
+    url: https://github.com/BigMouseFive/lemon02
 
 # exclude my node related stuff
-exclude: ['package.json', 'src', 'node_modules']
+exclude: ['package.json', 'src', 'node_modules', 'yulib.resource']

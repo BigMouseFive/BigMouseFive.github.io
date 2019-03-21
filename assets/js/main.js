@@ -1279,13 +1279,16 @@ function(t, e, n) {
         t("#sidebar,a#slide,#fade").addClass("slide"),
         t("#open").hide(),
         t("#search").hide(),
-        t("#close").show()
+        t("#toc").hide()
+        // t("#close").show()
     }),
     t("#fade").click(function() {
         t("#sidebar,a#slide,#fade").removeClass("slide"),
         t("#open").show(),
         t("#search").show(),
-        t("#close").hide()
+        t("#toc").show(),
+        // t("#close").hide(),
+        t(".search-form").hasClass("active") && (t(".search-wrapper").toggleClass("active"), t(".search-form").toggleClass("active"))
     }),
     e.onkeydown = function(t) {
         if (32 == t.keyCode && t.target == document.body) return t.preventDefault(),
@@ -1319,13 +1322,21 @@ function(t, e, n) {
     function() {
         t(".search-wrapper").toggleClass("active"),
         r.searchform.toggleClass("active"),
-        r.canvas.toggleClass("search-overlay"),
+        t("#fade").addClass("slide"),
+        //r.canvas.toggleClass("search-overlay"),
+        t("#toc").hide(),
+        t("#open").hide(),
+        t("#search").hide(),
         t(".search-field").simpleJekyllSearch()
     }),
     r.close.on("click",
     function() {
         t(".search-wrapper").toggleClass("active"),
         r.searchform.toggleClass("active"),
-        r.canvas.removeClass("search-overlay")
+        t("#fade").removeClass("slide"),
+        t("#open").show(),
+        t("#search").show(),
+        t("#toc").show()
+        //r.canvas.removeClass("search-overlay")
     })
 } (Zepto, window);
