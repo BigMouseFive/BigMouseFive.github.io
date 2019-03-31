@@ -12,10 +12,10 @@ tags:
 
 ## 情况分析
 
-* 当**购物车价格**小于**当前定价**，**降价比**不超过**设定值**，设置价格为【**购物车价格**-**降价值**】
-* 当**购物车价格**小于**当前定价**，**降价比**超过**设定值**，不改价
-* 当**购物车价格**等于**当前定价**，不改价
-* 当**购物车价格**大于**当前定价**，不改价
+- 当**购物车价格**小于**当前定价**，**降价比**不超过**设定值**，设置价格为【**购物车价格**-**降价值**】
+- 当**购物车价格**小于**当前定价**，**降价比**超过**设定值**，不改价
+- 当**购物车价格**等于**当前定价**，不改价
+- 当**购物车价格**大于**当前定价**，不改价
 
 # 改价程序流程
 
@@ -107,20 +107,20 @@ loginHandler = chrome.current_window_handle
 
 ## 开始循环改价
 
-* 获取商品列表的第一行 **first_row**
+- 获取商品列表的第一行 **first_row**
 
 ```python
  first_row = chrome.find_elements_by_css_selector('//*[@id="table-inventory"]/tbody/tr[1]')
 ```
 
-* 点击第一行
+- 点击第一行
 
 ```python
 chrome.execute_script("arguments[0].click()", first_row)
 ```
 
-* 循环改价操作
-   ![chagePriceOperate]({{site.url | append: site.baseurl}}/assets/img/chagePriceOperate.png)
+- 循环改价操作
+   ![chagePriceOperate]\({{site.url | append: site.baseurl}}/assets/img/chagePriceOperate.png)
 
 ```python
     i = 0
@@ -184,6 +184,7 @@ chrome.execute_script("arguments[0].click()", first_row)
 # 总结
 
 ## xpath的使用
+
 ## 判断网页已全部加载完成
 
 ```python
@@ -215,3 +216,25 @@ input_elem.send_keys("content")
 ```
 
 ## python+selenium开发基本过程
+
+1. 用chrome打开你要访问的网页，通过==检查元素==来查找你要控制的元素（eg. 输入框，按钮，文本等）
+2. 获取该元素的==css path==或者==xpath==
+3. 使用selenium通过步骤2的==path==来获取元素
+4. 使用selenium对元素操作
+   - 输入框：清空，输入
+   - 按钮：点击
+   - 通用：获取html内容，获取标签各类属性值
+5. 使用selenium对浏览器的操作
+   - 打开网址
+   - 打开新的标签页
+   - 切换标签页
+6. 使用selenium对浏览器属性设置（通过在创建浏览器的时候通过配置文件实现）
+   - 禁止加载图片
+   - 是否显示浏览器
+   - 指定`user-data-dir`[保存的浏览器历史记录，密码表单和cookies等]
+   - 指定错误输出等级
+7. 使用要注意的问题
+   - 当你不需要使用机器上的chrome的cookies等个人记录时，不需要去指定`user-data-dir`，这样selenium创建的将是一个没有任何个人记录的浏览器。
+   - 当你需要使用机器上的chrome的个人记录是，则必须指定`user-data-dir`。这时候建议是不要再使用这个chrome浏览器了，因为可能会产生干扰。可以使用其他的浏览器访问网页。
+   - 通过设置错误输出等级可以避免在命令行窗口输出很多调试信息
+   - 
