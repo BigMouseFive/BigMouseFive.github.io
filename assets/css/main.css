@@ -1279,8 +1279,13 @@ html,body {
 	color: #333;
 }
 
+code.highlighter-rouge {
+    background: #2f2f33;
+    border-radius: 3px;
+}
+
 .post-content p code,.post-content li code {
-	color: #615576
+	color: #c1c2c3;
 }
 
 .post-content a {

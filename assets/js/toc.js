@@ -52,7 +52,7 @@
             var innerText = (header.textContent === undefined) ? header.innerText: header.textContent;
             var level = get_level(header);
             for (var i = level - 1; i >= 0; i--) {
-              innerText = "&nbsp;&nbsp;&nbsp;&nbsp;" + innerText;
+              innerText = "&nbsp;&nbsp;" + innerText;
             }
             distance_map.list[header.id] = $("#"+header.id).offset().top;
             return "<p name=" + header.id +  " >" +  innerText + "</p>";
