@@ -217,9 +217,9 @@ input_elem.send_keys("content")
 
 ## python+selenium开发基本过程
 
-1. 用chrome打开你要访问的网页，通过==检查元素==来查找你要控制的元素（eg. 输入框，按钮，文本等）
-2. 获取该元素的==css path==或者==xpath==
-3. 使用selenium通过步骤2的==path==来获取元素
+1. 用chrome打开你要访问的网页，通过**检查元素**来查找你要控制的元素（eg. 输入框，按钮，文本等）
+2. 获取该元素的**css path**或者**xpath**
+3. 使用selenium通过步骤2的**path**来获取元素
 4. 使用selenium对元素操作
    - 输入框：清空，输入
    - 按钮：点击

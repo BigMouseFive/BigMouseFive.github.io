@@ -94,10 +94,10 @@ redcloth:
 
 开发
 
-- \_includes: 包含==html文档==
-- \_layouts: 包含==html模板==
-- \_posts: 包含==文章/博客==
-- \_assets: 包含==资源==（包括font/img/js/css）
+- \_includes: 包含**html文档**
+- \_layouts: 包含**html模板**
+- \_posts: 包含**文章/博客**
+- \_assets: 包含**资源**（包括font/img/js/css）
 - \_config.xml: jekyll配置文件
 - index.html: 网站首页html文件
 - posts.html: posts页面
@@ -118,7 +118,7 @@ redcloth:
 - 文章名n
 
 总结
-开发阶段，==文章==头部可以使用Yaml来定义变量。==html文件==可以通过liquid来使用Yaml定义的变量，也可以通过Yaml来定义变量。所以在开发阶段的使用了liquid或Yaml的html文件是不能正常使用的网页文件，但是这样却可以很方便的实现以下功能
+开发阶段，**文章**头部可以使用Yaml来定义变量。**html文件**可以通过liquid来使用Yaml定义的变量，也可以通过Yaml来定义变量。所以在开发阶段的使用了liquid或Yaml的html文件是不能正常使用的网页文件，但是这样却可以很方便的实现以下功能
 
 - 通过Yaml来给html定义要使用的layout
 - 在文章头部定义类型，时间，标签，我们就可以通过在html文件中使用liquid按照不同的分类方式获取文章。
@@ -135,7 +135,7 @@ redcloth:
 通常网上下载下来的字体文件都很大，如果不做处理直接使用这些文件，会导致网页加载时间很长。所以要缩小字体文件。我们可以通过使用[font-spider:字蛛](http://font-spider.org/)。
 在使用font-spider时会遇到一些问题。
 
-- 推荐使用==ttf==格式，==eot、otf==格式是不支持的
+- 推荐使用**ttf**格式，**eot、otf**格式是不支持的
 - 确保网页中使用字体的目录是本地目录不是远程目录。本地目录类似这样D:/test/webpage/src/font/type.ttf，远程目录类似这样<http://domain.com/src/font/type.ttf>、\<localHost:80/src/font/type.tff>。要确保使用的是本地目录有这两点：
   - css文件中定义字体的使用的url是相对路径
   - html文件中使用css文件使用的是本地绝对路径或者是相对路径

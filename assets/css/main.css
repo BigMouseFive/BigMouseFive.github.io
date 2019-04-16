@@ -1258,7 +1258,7 @@ html,body {
 }
 
 .post-content p,.post-content h1,.post-content h2,.post-content h3,.post-content h4,.post-content ul,.post-content ol,.post-content .tags,.post-content iframe {
-	max-width: 50rem;
+	max-width: 70rem;
 	padding: 0 1.25rem;
 	margin: 0 auto 1.875rem;
 	font-family: 'HanSansCN';
@@ -1280,12 +1280,12 @@ html,body {
 }
 
 code.highlighter-rouge {
-    background: #2f2f33;
+    background: #eee;
     border-radius: 3px;
 }
 
 .post-content p code,.post-content li code {
-	color: #c1c2c3;
+	color: #555;
 }
 
 .post-content a {
