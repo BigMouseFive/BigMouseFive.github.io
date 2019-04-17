@@ -22,7 +22,17 @@
         </section>
         <script type="text/javascript">
             $(document).ready(function() {
+                var toggleFlag = true;
                 $('#toc').toc();
+                $('a#content').removeClass("contentHide");
+                $('a#content').click(function(){
+                    $('#toc').slideToggle(0);
+                    if (toggleFlag) 
+                        $('.post').animate({"margin-left": "62px"});
+                    else
+                        $('.post').animate({"margin-left": "462px"}); 
+                    toggleFlag = !toggleFlag;
+                });
             });
         </script>
     </body>
