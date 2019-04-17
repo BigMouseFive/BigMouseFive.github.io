@@ -1355,7 +1355,7 @@ code.highlighter-rouge {
 }
 
 .post-content ul,.post-content ol {
-	padding-left: 2.5rem
+	padding-left: 4.5rem
 }
 
 .post-content ul.post-list {
@@ -1582,7 +1582,7 @@ pre code {
 	float: none;
 	display: block;
 	margin-right: auto;
-	margin-left: auto;
+	margin-left: 0;
 	padding-left: 0;
 	padding-right: 0;
 	padding: 0 1.25rem;
@@ -1609,14 +1609,15 @@ pre span {
 }
 
 .highlight {
+	max-width: 67rem;
 	white-space: pre;
 	overflow: auto;
 	word-wrap: normal;
-	border-radius: 0;
+	border-radius: 20px;
 	/*padding: 20px;*/
 	background-color: #2f2f33;
 	color: #c1c2c3;
-	margin: 0;
+	margin: auto;
 }
 
 div.highlight{

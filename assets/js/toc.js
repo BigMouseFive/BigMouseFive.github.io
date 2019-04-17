@@ -8,7 +8,7 @@
             noBackToTopLinks: false,
             title: '',
             minimumHeaders: 0,
-            headers: 'h1, h2, h3, h4, h5, h6',
+            headers: 'h1, h2, h3',
             // values: [ol|ul]
             listType: 'ul',
             // values: [show|slideDown|fadeIn|none]
@@ -52,7 +52,7 @@
             var innerText = (header.textContent === undefined) ? header.innerText: header.textContent;
             var level = get_level(header);
             for (var i = level - 1; i >= 0; i--) {
-              innerText = "&nbsp;&nbsp;" + innerText;
+              innerText = "&nbsp;&nbsp;&nbsp;&nbsp;" + innerText;
             }
             distance_map.list[header.id] = $("#"+header.id).offset().top;
             return "<p name=" + header.id +  " >" +  innerText + "</p>";
