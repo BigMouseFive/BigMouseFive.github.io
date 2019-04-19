@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 深入理解nginx模块开发与架构解析第二部分
+title: 深入理解nginx模块开发与架构解析[3]
 date: '2019-04-17 09:40'
 categories: 
  - 笔记
@@ -548,4 +548,50 @@ struct ngx_file_s {
   unsigned directio:1;
 };
 ```
-  
+
+#### 3.8.2 清理文件句柄
+
+Nginx会异步地将整个文件高效的发给用户，但是我们必须要求HTTP框架在响应发送完毕后关闭已经打开的文件句柄，否则会出现句柄泄漏的问题。
+
+```cpp
+typedef struct ngx_pool_cleanup_s ngx_pool_cleanup_t;
+struct ngx_pool_cleanup_s {
+  ngx_pool_cleanup_pt handler;//执行清理资源的回调函数
+  void *data;//回调函数要使用的参数
+  ngx_pool_cleanup_t *next;
+};
+
+void ngx_pool_cleanup_file_t(void *data){
+  ngx_pool_cleanup_file_t *c = data;
+  ngx_log_dubug1(NGX_LOG_DEBUG_ALLOC, c->log, 0, "file cleanup: fd:%d", c->fd);
+  if (ngx_close_file(c->fd) == NGX_FILE_ERROR) {
+    ngx_log_error(NGX_LOG_ALERT, c->log, ngx_errno,
+                  "ngx_close_file_n \"%s\" failed", c->name);
+  }
+}
+```
+
+#### 3.8.3 支持用户多线程下载和断点续传
+
+RFC2616规范中定义了range协议，它给出了一种规则是的客户端可以在一次请求中只下载完整文件的一部分，这样就可以支持客户端开启多个线程同时下载一份问价。`r->allow_ranges = 1;`
+
+### 3.9 用c++语言编写HTTP模块
+
+#### 3.9.1 编译方式的修改
+
+方式1：修改configure相关的脚本
+方式2：修改configure执行完毕后生成的Makefile文件
+推荐使用方式2。只要在Makefile 中新增一行`CXX=g++`，然后把链接处的`$(CC)`改成`$(CXX)`，然后把需要使用g++来编译的文件处都改成`$(CXX)`。
+
+#### 3.9.2 程序中的符号转换
+
+```cpp
+extern "c"{
+  #include <ngx_config.h>
+  #include <ngx_core.h>
+  #include <ngx_http.h>
+}
+```
+
+向上面那样修改就可以正常的调用Nginx方法了。
+

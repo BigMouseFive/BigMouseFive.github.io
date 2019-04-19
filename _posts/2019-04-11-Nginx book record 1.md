@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 深入理解nginx模块开发与架构解析第一部分
+title: 深入理解nginx模块开发与架构解析[1][2]
 date: '2019-04-11 17:00'
 categories: 
  - 笔记
@@ -158,7 +158,7 @@ Nginx运行至少加载几个核心模块和一个事件类模块。有些配置
 
 1. 是否以守护进程方式运行Nginx `daemon on|off`
 2. 是否以master/worker方式工作 `master_process on|off`
-3. error日志的设置 `error_log /path/file level`。`level`的取值范围{debug/info/notice/warn/eror/crit/alert/emerg}，从左至右依次增大。大于等于设定级别的日志都会被输出。`/path/file=/dev/null`时就不会输出任何日志。
+3. error日志的设置 `error_log /path/file level`。`level`的取值范围{debug/info/notice/warn/error/crit/alert/emerg}，从左至右依次增大。大于等于设定级别的日志都会被输出。`/path/file=/dev/null`时就不会输出任何日志。
 4. 是否处理几个特殊的调试点 `debug_points [stop|abort]`。通常不使用这个选项
 5. 仅对指定的客户端输出debug级别的日志 `debug_connection [IP|CIDR]`。 这个配置项实际上属于事件类，所以必须放在`events{}`中才有效。
 6. 限制coredump核心转储文件的大小 `worker_rlimit_core size`。nginx进程出现非法操作的时候会生成核心转储文件（coredump），可以通过coredump文件获取当时的堆栈和寄存器登等信息，用于调试。但这个文件的很多信息不一定是用户需要的，如果不加限制，那么一个coredump文件会变得很大。所以要有这个选项来限制coredump文件的大小。
