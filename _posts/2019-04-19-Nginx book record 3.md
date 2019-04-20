@@ -310,3 +310,26 @@ static char* ngx_http_mytest_loc_conf(ngx_conf_t *cf, void *parent, void *child)
 ```
 
 Nginx有10个预设的合并方法。
+
+### 4.3 HTTP配置模型
+
+当Nginx检测到`http{}`这个关键配置项时，HTTP配置模型就启动了，这时会首先建立1个`ngx_http_conf_ctx_t`结构。下面看一下这个结构的定义。
+```cpp
+typedef struct {
+  void **main_conf;
+  void **srv_conf;
+  void **loc_conf;
+} ngx_http_conf_ctx_t;
+```
+
+这时HTTP框架会为所有的HTTP模块建立3个数组，分别存放所有HTTP模块的`create_main_conf`、`create_srv_conf`、`create_loc_conf`方法返回的地址指针。
+
+#### 4.3.1 解析HTTP配置的流程
+
+参见图4-1 解析http配置项的示意流程图
+
+#### 4.3.2 HTTP配置模型的内存布局
+
+http{}块下有一个`ngx_http_conf_ctx_t`结构，每个server{}下也有一个`ngx_http_conf_ctx_t`结构。如果有个location{}，那么它也有一个`ngx_http_conf_ctx_t`结构。
+server{}中因为不会去获取`main_conf`，所以server{}块下的`ngx_http_conf_ctx_t`结构的`main_conf`成员指向的是它所属http{}块中的`main_conf`。
+同理location{}块下的`main_conf`指向所属http{}块中的`main_conf`，`srv_conf`指向所属server{}块
