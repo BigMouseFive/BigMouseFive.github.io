@@ -333,3 +333,51 @@ typedef struct {
 http{}块下有一个`ngx_http_conf_ctx_t`结构，每个server{}下也有一个`ngx_http_conf_ctx_t`结构。如果有个location{}，那么它也有一个`ngx_http_conf_ctx_t`结构。
 server{}中因为不会去获取`main_conf`，所以server{}块下的`ngx_http_conf_ctx_t`结构的`main_conf`成员指向的是它所属http{}块中的`main_conf`。
 同理location{}块下的`main_conf`指向所属http{}块中的`main_conf`，`srv_conf`指向所属server{}块
+
+http{}中的`create_svr_conf`方法获取的是直属于http{}下的配置项，存储模块配置结构体ConfA中。
+serve{}中的`create_svr_conf`方法获取的直属于server{}下的配置项，存储模块配置结构体ConfB中。
+ConfA和ConfB结构体是不同的结构体。
+合并配置项的时候：ConfA中独有的配置项会直接合并到ConfB中；有相同配置项的时候，可以通过自定义`merge_srv_conf`函数来确定应该是是什么值。
+
+#### 4.3.3 如何合并配置项
+
+一层层的循环遍历下去。遍历到了，如果实现了`merge_srv_conf`或者`merge_loc_conf`的函数，就调用该函数进行合并。
+
+### error日志的用法
+
+```cpp
+#define ngx_log_error(level, log, args...) \
+  if ((log)->log_level >= level) ngx_log_error_core((level, log, args)
+#define ngx_log_debug(level, log, args...) \
+  if ((log)->log_level & level) ngx_log_error_core(NGX_LOG_DEBUG, log, args)
+
+void ngx_log_error_core(ngx_uint_t level, ngx_log_t *log, ngx_err_t err, const char *fmt, ...);
+```
+
+`ngx_log_error`中的`level`表达的是事件的等级。
+`ngx_log_bug`中的`level`表达的调试的日志类型。
+nginx仿照`printf`使用可变参数，并且添加了更多的输出类型。
+
+### 4.5 请求的上下文
+
+#### 4.5.1 上下文与全异步Web服务器的关系
+
+一般在刚开始处理请求时，在内存池分配上下文，之后当经由epoll、HTTP框架再次调用到HTTP模块处理方法时，这个HTTP模块可以由请求的上下文结构体中获取信息。请求结束时就会销毁该请求的内存池。
+为什么要定义HTTP上下文的概念？因为Nginx是全异步的，一次请求很大可能会不顺畅的一次性执行完，因为可能这个请求处理过程要执行一些耗时的操作，又或者有更高级的处理打断了这个次请求的处理。所以为了实现允许请求处理能被打断，又能被唤起成功执行。需要一个上下文的概念来保存请求处理的一些状态。
+
+#### 4.5.2 如何使用HTTP上下文
+
+`ngx_http_get_module_ctx`和`ngx_http_set_ctx`这个两个宏可以完成HTTP上下文的设置和使用。
+
+```cpp
+#define ngx_http_get_module_ctx(r, module) (r)->ctx[module.ctx_index]
+#define ngx_http_set_ctx(r, c, module) r->ctx[module.ctx_index] = c;
+```
+
+#### 4.5.3 HTTP框架如何维护上下文结构
+
+HTTP框架在开始处理一个HTTP请求时，会在创建`ngx_http_request_t`结构后，建立ctx数组来存储所有HTTP模块的上下文结构体指针。
+
+## 章后练习
+
+1. 
