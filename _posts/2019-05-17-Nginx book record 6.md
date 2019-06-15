@@ -196,5 +196,6 @@ ngx_queue_sort(ngx_queue_t *queue,
 
 加入新元素之后，如果满足规则则不需要变化，否则可能的操作有变色，左旋，右旋。
 
+[红黑树原理详细](https://www.cnblogs.com/skywang12345/p/3245399.html)
 
  
