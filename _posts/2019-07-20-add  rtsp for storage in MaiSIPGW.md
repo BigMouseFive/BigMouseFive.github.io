@@ -24,3 +24,4 @@ tags:
 SETUP: 根据录像源信息建立`MaiAVRetransmissionSrcInfo`
 PLAY: 启动数据流通
 TEARDOWN: 释放`MaiAVRetransmissionSrcInfo`资源
+

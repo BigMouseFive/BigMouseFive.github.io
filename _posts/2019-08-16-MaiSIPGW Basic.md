@@ -30,7 +30,7 @@ tags:
 
 这一层主要实现的的就是录像计划的增、删、改、查。
 ```cpp
-class MaiTfpfServerItf : public MaiHTTPServerResponser{
+class MaiTfpfServerItf : public MaiHTTPServerResponser
 // http服务，用来接收http请求，包括的功能有:
 // 1. 添加/删除/获取录像
 // 2. 设置获取录像流的速度/状态
@@ -185,10 +185,3 @@ class MaiMediaServerRetransmission : public MaiComInterface
 所以当我们要创建一条流媒体转发链路的时候，我们创建一个`MaiMediaServerRetransmission`，然后根据对应的媒体流类型创建对应的`demuxer`去获取并解封装，然后根据需求添加对应的`muxer`去封装。
 
 注：muxer类型和demuxer类型分别写在MaiMemMuxer.h和MaiMemDemuxer.h中。一个类即为一种类型。
-
-
-
-
-
-
-
