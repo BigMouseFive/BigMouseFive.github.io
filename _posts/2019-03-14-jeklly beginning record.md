@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  本博客设计
-image: ''
-date:   2019-03-14 17:22
+date: '2019-03-14 17:22'
 tags:
   - jeklly
 description: ''
