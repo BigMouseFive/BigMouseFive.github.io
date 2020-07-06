@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Qt界面不刷新调试
-date: 2019-03-25 16:11
+date: '2019-03-25 16:11'
 categories: 
   - 工作记录
 tags:

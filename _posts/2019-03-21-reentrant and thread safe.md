@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 可重入与线程安全
-date:   2019-03-21 12:11
+date: '2019-03-21 12:11'
 categories: 
   - 概念
 tags:

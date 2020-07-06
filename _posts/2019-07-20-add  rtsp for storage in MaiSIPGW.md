@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 为录像提供rtsp流获取方式
-date: '2019-07-20 10:58'c
+date: '2019-07-20 10:58'
 categories: 
  - 工作记录
 tags:
