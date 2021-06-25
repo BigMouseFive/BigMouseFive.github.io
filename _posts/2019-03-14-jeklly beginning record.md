@@ -15,7 +15,7 @@ categories:
 - [Yaml](https://www.jianshu.com/p/667961cdf9c4)：用在全局配置文件，网页，博客文章头部
 - [Liquid](https://liquid.bootcss.com/): 在网页中使用由Yaml定义的数据
 
-# \_config.yml默认配置
+# _config.yml默认配置
 
 ```yaml
 source:      .
